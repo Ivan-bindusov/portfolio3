@@ -34,6 +34,9 @@ if(isset($_POST["submit"])) {
 <body>
 
 <div class="container">
+    <?php
+    include('menu.php');
+    ?>
     <?if(isset($_SESSION["ERROR_MESSAGE"])):?>
         <div class="alert alert-danger">
             <?=$_SESSION["ERROR_MESSAGE"]?>
