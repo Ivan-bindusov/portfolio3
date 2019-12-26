@@ -4,10 +4,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/Db.php");
 
 if(isset($_POST["submit"])) {
     if(!empty($_POST["title"]) && !empty($_POST["content"])) {
-        $db = Db::getInstance();
+        $db = Db::getInstance(); //получаем объект класса работы с базой данных
         $title = htmlspecialchars($_POST["title"]);
         $content = htmlspecialchars($_POST["content"]);
-        $res = $db->add($title, $content);
+        $res = $db->add($title, $content); //выполняем добавление записи в базу данных
         if($res){
             $_SESSION["MESSAGE"] = "Статья успешно добавлена";
         }else{
