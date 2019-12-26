@@ -35,6 +35,7 @@ if(isset($_POST["submit"])) {
 <body>
 
 <div class="container">
+    <h2>Test</h2>
     <?php
     include('menu.php');
     ?>
