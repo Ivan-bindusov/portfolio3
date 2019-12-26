@@ -13,12 +13,18 @@ class Db
         \PDO::ATTR_EMULATE_PREPARES => false
     ];
 
+    /**
+     * Db constructor.
+     */
     private function __construct()
     {
         self::$pdo = new \PDO(self::$dsn, self::$user, self::$passw, self::$param);
     }
 
-    public static function getInstance()
+    /**
+     * @return Db
+     */
+    public static function getInstance() //метод для получения объекта кдасса Db
     {
         if(!self::$instance){
             self::$instance = new self;
@@ -26,6 +32,9 @@ class Db
         return self::$instance;
     }
 
+    /**
+     * @return array
+     */
     public function getAll()
     {
         $sql = "SELECT id, title, date, content FROM blog";
@@ -35,6 +44,11 @@ class Db
         return $content;
     }
 
+    /**
+     * @param $title
+     * @param $content
+     * @return bool
+     */
     public function add($title, $content)
     {
         $sql = "INSERT INTO blog (title, content, date) VALUES (:title, :content, now())";
@@ -47,6 +61,10 @@ class Db
         return $res;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function delete($id)
     {
         $sql = "DELETE FROM blog WHERE id = :id";
@@ -56,6 +74,12 @@ class Db
         return $res;
     }
 
+    /**
+     * @param $id
+     * @param $title
+     * @param $content
+     * @return bool
+     */
     public function update($id, $title, $content)
     {
         $sql = "UPDATE blog SET title = :title, content = :content WHERE id = :id";
