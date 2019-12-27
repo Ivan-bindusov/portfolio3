@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class Db
+ * класс для работы с базой данных
+ */
 class Db
 {
     private static $pdo;
